@@ -1,0 +1,69 @@
+/* Token Select Modal Styles */
+.token-select-modal .ant-modal-content {
+  background-color: #191b1f;
+  border-radius: 16px;
+  border: 1px solid #40444f;
+}
+
+.token-select-modal .ant-modal-header {
+  background-color: #191b1f;
+  border-bottom: 1px solid #40444f;
+  border-radius: 16px 16px 0 0;
+  padding: 16px 24px;
+}
+
+.token-select-modal .ant-modal-title {
+  color: white;
+  font-weight: bold;
+}
+
+.token-select-modal .ant-modal-close {
+  color: #a0a0a0;
+}
+
+.token-select-modal .ant-modal-close:hover {
+  color: white;
+}
+
+.token-select-modal .ant-list-item:hover {
+  background-color: #333456;
+}
+
+.token-select-modal .ant-input-affix-wrapper {
+  background-color: #2c2f36;
+  border: 1px solid #40444f;
+}
+
+.token-select-modal .ant-input-affix-wrapper:focus,
+.token-select-modal .ant-input-affix-wrapper-focused {
+  border-color: #595B83;
+  box-shadow: 0 0 0 2px rgba(89, 91, 131, 0.2);
+}
+
+.token-select-modal .ant-input {
+  background-color: transparent;
+  color: white;
+}
+
+.token-select-modal .ant-input::placeholder {
+  color: #a0a0a0;
+}
+
+/* Custom scrollbar for the token list */
+.token-select-modal .ant-list {
+  scrollbar-width: thin;
+  scrollbar-color: #40444f #191b1f;
+}
+
+.token-select-modal .ant-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.token-select-modal .ant-list::-webkit-scrollbar-track {
+  background: #191b1f;
+}
+
+.token-select-modal .ant-list::-webkit-scrollbar-thumb {
+  background-color: #40444f;
+  border-radius: 6px;
+}

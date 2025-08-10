@@ -1,0 +1,164 @@
+/* Swap Component Styles */
+.swap-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #060930 0%, #333456 40%, #333456 70%, #595B83 100%);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swap-card {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border: 1px solid #2c2f36;
+  background: #191b1f;
+  padding: 24px;
+}
+
+.swap-title.ant-typography,
+.swap-card h2.ant-typography {
+  margin: 0 !important;
+  color: #ffffff !important;
+  text-align: center !important;
+  margin-bottom: 24px !important;
+  font-weight: bold !important;
+}
+
+.input-box {
+  background: #2c2f36;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 8px;
+  border: 1px solid #40444f;
+}
+
+.input-number {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.swap-button.ant-btn {
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: #F4ABC4 !important;
+  opacity: 1 !important;
+  color: white !important;
+  box-shadow: 0 0 6px #F4ABC4 !important;
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.swap-button.ant-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #F4ABC4;
+}
+
+.swap-button-container {
+  text-align: center;
+  margin: 16px 0;
+  position: relative;
+  z-index: 10;
+}
+
+.submit-button.ant-btn-primary {
+  width: 100% !important;
+  height: 56px !important;
+  margin-top: 16px !important;
+  border-radius: 12px !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  background: linear-gradient(to right, #F4ABC4, #fa89b0) !important;
+  border: none !important;
+  color: white !important;
+}
+
+/* Disabled button state */
+.submit-button.ant-btn-primary[disabled],
+.submit-button.ant-btn-primary[disabled]:hover,
+.submit-button.ant-btn-primary[disabled]:focus,
+.submit-button.ant-btn-primary[disabled]:active {
+  background: #333456;
+  color: #a0a0a0;
+  border-color: transparent;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.exchange-rate-card {
+  margin-top: 16px;
+  margin-bottom: 24px;
+  text-align: right;
+}
+
+.exchange-rate-value {
+  font-size: 14px;
+  color: #ff007a;
+  font-weight: 500;
+}
+
+.loading-container {
+  text-align: center;
+  padding: 40px;
+  background: #2c2f36;
+  border-radius: 16px;
+  border: 1px solid #40444f;
+}
+
+.loading-text {
+  margin-top: 16px;
+  color: #ffffff;
+}
+
+.error-text {
+  color: #ff007a;
+  font-weight: 500;
+}
+
+.swap-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px 0;
+  position: relative;
+  z-index: 5;
+}
+
+.swap-button.ant-btn {
+  transition: all 0.3s ease !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 auto !important;
+  position: relative !important;
+  left: 0 !important;
+  transform: translateX(0) !important;
+}
+  
+.swap-button:hover {
+	box-shadow: 0 0 10px #fa89b0, 0 0 15px #fa89b0, 0 0 20px #fa89b0 !important;
+	transform: scale(1.05);
+}
+
+.swap-button:hover .anticon {
+	animation: rotate360 0.5s ease;
+}
+
+@keyframes rotate360 {
+	from {
+		transform: rotate(90deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+  

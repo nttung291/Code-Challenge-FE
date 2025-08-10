@@ -1,0 +1,27 @@
+.white-input .ant-input-number-input {
+	color: white !important;
+}
+
+.white-input .ant-input-number-input::placeholder {
+	color: #a0a0a0 !important;
+	opacity: 1;
+}
+
+.white-input input::placeholder {
+	color: #a0a0a0 !important;
+	opacity: 1;
+}
+
+/* Override Ant Design's default styles for better visibility in dark mode */
+.ant-select-selector {
+	background-color: #2c2f36 !important;
+	border-color: #40444f !important;
+}
+
+.ant-select-selection-item {
+	color: white !important;
+}
+
+.ant-select-arrow {
+	color: white !important;
+}
