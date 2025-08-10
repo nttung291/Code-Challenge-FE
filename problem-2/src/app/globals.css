@@ -44,3 +44,51 @@ a {
 .font-mono {
   font-family: var(--font-roboto-mono), monospace;
 }
+
+/* Global styles for the application */
+
+/* Placeholder styling for all inputs */
+input::placeholder,
+.ant-input-number-input::placeholder,
+.ant-input::placeholder {
+  color: #a0a0a0 !important;
+  opacity: 1 !important;
+}
+
+/* Ensure white text in inputs */
+.ant-input-number-input,
+.ant-input {
+  color: white !important;
+}
+
+/* Focus border color */
+.ant-input-number:focus,
+.ant-input-number-focused,
+.ant-input:focus,
+.ant-input-focused,
+.ant-select:focus .ant-select-selector,
+.ant-select-focused .ant-select-selector {
+  border-color: #595B83 !important;
+  box-shadow: 0 0 0 2px rgba(89, 91, 131, 0.2) !important;
+  outline: 0 !important;
+}
+
+/* Ensure dark backgrounds for select dropdowns */
+.ant-select-dropdown {
+  background-color: #2c2f36 !important;
+  border: 1px solid #40444f !important;
+}
+
+.ant-select-item {
+  color: white !important;
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+  background-color: #3a3d46 !important;
+}
+
+.ant-select-item-option-active:not(.ant-select-item-option-disabled) {
+  background-color: #3a3d46 !important;
+}
+
+

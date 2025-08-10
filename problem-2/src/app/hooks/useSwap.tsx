@@ -113,7 +113,6 @@ export const useSwap = (tokenPrices: Record<string, number>) => {
     onError: () => {},
   });
 
-  // Handle form submission
   const handleSubmit = useCallback(() => {
     if (fromAmount && toAmount && fromToken !== toToken) {
       mutate({
