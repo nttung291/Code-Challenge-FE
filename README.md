@@ -68,11 +68,10 @@ I used **Claude Code** (Anthropic's CLI) throughout this challenge. The split
 was roughly: I set direction — what to build, which changes were worth making,
 how it should look — and the assistant did most of the writing.
 
-Problem 2's direction was my call: upgrading to Next.js 16 and Ant Design 6,
+Problem 2's direction was my call: using Next.js 16 and Ant Design 6,
 refactoring the swap logic out of the components, and the visual details, such
 as keeping the original look over a flashier redesign and getting the switch
-button to a true circle with the right hover colour. I also decided to try an
-EN/VI switch and then drop it to keep the scope tight. Claude Code did the
+button to a true circle with the right hover colour. Claude Code did the
 refactor, and on a review pass over code I had considered finished it caught
 that the exchange rate was inverted (1 ETH quoted about 0.0006 USDC) and that
 the price feed has duplicate records for the same currency.
@@ -86,9 +85,5 @@ the refactor.
 Problem 1 was a useful check in the other direction: the tests showed that a
 "halve the even factor first" trick from a reference solution isn't needed,
 because `n * (n + 1)` stays exact up to `MAX_N`, so the simpler formula stayed.
-
-What stayed with me was judgement: which findings were real, how far to take each
-fix, where to stop. I can talk through any line of what is here. The commits
-carry a `Co-Authored-By` trailer where the assistant was involved.
 
 Happy to walk through any of it live.
