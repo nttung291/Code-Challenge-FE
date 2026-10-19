@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
 import Providers from "./services/providers";
 import "./globals.css";
-import "@ant-design/v5-patch-for-react-19";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,6 +17,7 @@ const robotoMono = Roboto_Mono({
 
 export const metadata: Metadata = {
   title: "Token Swap",
+  description: "Swap tokens at live prices from the Switcheo price feed.",
 };
 
 export default function RootLayout({

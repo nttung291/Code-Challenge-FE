@@ -1,9 +1,7 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { Typography } from 'antd';
-
-const { Text } = Typography;
+import React from "react";
+import { formatUsd } from "../lib/format";
 
 interface PriceDisplayProps {
   token: string;
@@ -16,12 +14,13 @@ export const PriceDisplay: React.FC<PriceDisplayProps> = ({
   amount,
   price,
 }) => (
-  <Text style={{ fontSize: 12, color: '#a5b4fc' }}>
-    <span className="font-mono">${price.toFixed(4)}</span> per {token}
-    {amount && (
-      <span style={{ marginLeft: 8, color: '#ff007a' }}>
-        ≈ <span className="font-mono">${((amount || 0) * price).toFixed(2)}</span>
+  <span className="price-display">
+    <span className="font-mono">{formatUsd(price)}</span> per {token}
+    {/* `amount > 0`, not `amount &&`, so a 0 is never rendered as text */}
+    {amount !== null && amount > 0 && (
+      <span className="price-display-total">
+        ≈ <span className="font-mono">{formatUsd(amount * price)}</span>
       </span>
     )}
-  </Text>
+  </span>
 );

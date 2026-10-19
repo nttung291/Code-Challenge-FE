@@ -1,24 +1,27 @@
 "use client";
 
-import React from "react";
-import { Row, Col, Typography } from "antd";
-import { AmountInput } from "./AmountInput";
+import React, { useId } from "react";
+import { Button, InputNumber } from "antd";
 import { TokenSelect } from "./TokenSelect";
 import { PriceDisplay } from "./PriceDisplay";
-import "../styles/input.css";
-
-const { Text } = Typography;
+import { formatAmount } from "../lib/format";
+import { parseAmountInput } from "../lib/swap";
+import type { Balances, Token } from "../lib/types";
 
 interface CurrencyInputBoxProps {
   label: string;
   amount: number | null;
-  token: string;
-  tokens: string[];
-  tokenPrices: Record<string, number>;
+  token?: string;
+  tokens: Token[];
+  tokenMap: Map<string, Token>;
+  balance: number;
+  balances: Balances;
   onAmountChange: (value: number | null) => void;
-  onTokenChange: (value: string) => void;
-  getTokenImageUrl: (symbol: string) => string;
-  style?: React.CSSProperties;
+  onTokenChange: (symbol: string) => void;
+  onMax?: () => void;
+  invalid?: boolean;
+  disabled?: boolean;
+  className?: string;
 }
 
 export const CurrencyInputBox: React.FC<CurrencyInputBoxProps> = ({
@@ -26,60 +29,67 @@ export const CurrencyInputBox: React.FC<CurrencyInputBoxProps> = ({
   amount,
   token,
   tokens,
-  tokenPrices,
+  tokenMap,
+  balance,
+  balances,
   onAmountChange,
   onTokenChange,
-  getTokenImageUrl,
-  style = {},
-}) => (
-  <div style={{ ...styles.container, ...style }}>
-    <Row gutter={16} align="middle">
-      <Col span={24} style={{ marginBottom: 8 }}>
-        <Text strong style={{ color: "white", fontSize: 12 }}>
+  onMax,
+  invalid,
+  disabled,
+  className = "",
+}) => {
+  const inputId = useId();
+  const price = token ? tokenMap.get(token)?.price : undefined;
+
+  return (
+    <div className={`currency-box ${invalid ? "currency-box-invalid" : ""} ${className}`}>
+      <div className="currency-box-header">
+        <label htmlFor={inputId} className="currency-box-label">
           {label}
-        </Text>
-      </Col>
-      <Col span={14}>
-        <AmountInput
+        </label>
+        <span className="currency-box-balance">
+          Balance: <span className="font-mono">{formatAmount(balance)}</span>
+          {onMax && balance > 0 && (
+            <Button type="link" size="small" onClick={onMax} disabled={disabled} className="max-button">
+              MAX
+            </Button>
+          )}
+        </span>
+      </div>
+
+      <div className="currency-box-row">
+        <InputNumber<number>
+          id={inputId}
+          placeholder="0.0"
           value={amount}
           onChange={onAmountChange}
-          style={{
-            width: "100%",
-            border: "none",
-            background: "transparent",
-            fontSize: 24,
-            fontWeight: "bold",
-            color: "white",
-          }}
+          min={0}
+          controls={false}
+          variant="borderless"
+          disabled={disabled}
+          inputMode="decimal"
+          className="amount-input font-mono"
+          aria-invalid={invalid}
+          parser={(raw) => parseAmountInput(raw)}
         />
-      </Col>
-      <Col span={10}>
-        <TokenSelect
-          value={token}
-          onChange={onTokenChange}
-          tokens={tokens}
-          tokenPrices={tokenPrices}
-          getTokenImageUrl={getTokenImageUrl}
-        />
-      </Col>
-      {tokenPrices[token] && (
-        <Col span={24} style={{ marginTop: 8 }}>
-          <PriceDisplay
-            token={token}
-            amount={amount}
-            price={tokenPrices[token]}
+        <div className="currency-box-token">
+          <TokenSelect
+            value={token}
+            onChange={onTokenChange}
+            tokens={tokens}
+            tokenMap={tokenMap}
+            balances={balances}
+            disabled={disabled}
           />
-        </Col>
-      )}
-    </Row>
-  </div>
-);
+        </div>
+      </div>
 
-const styles = {
-  container: {
-    background: "#2c2f36",
-    borderRadius: 16,
-    padding: 20,
-    border: "1px solid #40444f",
-  },
+      {token && price !== undefined && (
+        <div className="currency-box-footer">
+          <PriceDisplay token={token} amount={amount} price={price} />
+        </div>
+      )}
+    </div>
+  );
 };
